@@ -1,3 +1,8 @@
+if not Config then
+    error("Config.lua has not been loaded. Please make sure the file exists, included in fxmanifest.lua, and is free of syntax errors.")
+    return
+end
+
 Citizen.CreateThread(function()
     for k,v in pairs(Config.Stations) do
         if v.blip then
@@ -22,7 +27,7 @@ Citizen.CreateThread(function()
         end
         if wait == Config.Wait.inVehicle then
             for k,v in pairs(Config.Stations) do
-                if GetDistanceBetweenCoords(GetEntityCoords(ped), v.coords, true) < v.radius then
+                if v.coords and GetDistanceBetweenCoords(GetEntityCoords(ped), v.coords, true) < v.radius then
                     if IsPedInAnyVehicle(ped) then
                         local vehicle = GetVehiclePedIsIn(ped, false)
                         if GetVehicleEngineHealth(vehicle) < Config.FixUnder and GetVehicleEngineHealth(vehicle) > 0 then
