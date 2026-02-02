@@ -11,15 +11,15 @@ Citizen.CreateThread(function()
             EndTextCommandSetBlipName(blip)
         end
     end
-    local wait = 2000
+    local wait = Config.Wait.outVehicle
     while true do
         Citizen.Wait(wait)
         if IsPedInAnyVehicle(PlayerPedId()) then
-            wait = 500
+            wait = Config.Wait.inVehicle
         else
-            wait = 2000
+            wait = Config.Wait.outVehicle
         end
-        if wait == 500 then
+        if wait == Config.Wait.inVehicle then
             for k,v in pairs(Config.Stations) do
                 if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), v.coords, true) < v.radius then
                     if IsPedInAnyVehicle(PlayerPedId()) then

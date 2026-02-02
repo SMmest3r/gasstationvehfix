@@ -47,3 +47,8 @@ Config.OnFix = {
 	},
 	paint = true -- Sets the vehicle's color to a new random color on vehicle fix
 }
+
+Config.Wait = {
+	inVehicle = 500, -- Wait time between checks when player is in a vehicle (in milliseconds) !Reducing this may impact performance!
+	outVehicle = 2000 -- Wait time between checks when player is not in a vehicle (in milliseconds) !Reducing this may impact performance!
+}
