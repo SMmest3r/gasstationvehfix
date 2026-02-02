@@ -14,17 +14,18 @@ Citizen.CreateThread(function()
     local wait = Config.Wait.outVehicle
     while true do
         Citizen.Wait(wait)
-        if IsPedInAnyVehicle(PlayerPedId()) then
+        local ped = PlayerPedId()
+        if IsPedInAnyVehicle(ped) then
             wait = Config.Wait.inVehicle
         else
             wait = Config.Wait.outVehicle
         end
         if wait == Config.Wait.inVehicle then
             for k,v in pairs(Config.Stations) do
-                if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), v.coords, true) < v.radius then
-                    if IsPedInAnyVehicle(PlayerPedId()) then
-                        local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
-                        if GetVehicleEngineHealth(vehicle) < 1000.0 and GetVehicleEngineHealth(vehicle) > 0 then
+                if GetDistanceBetweenCoords(GetEntityCoords(ped), v.coords, true) < v.radius then
+                    if IsPedInAnyVehicle(ped) then
+                        local vehicle = GetVehiclePedIsIn(ped, false)
+                        if GetVehicleEngineHealth(vehicle) < Config.FixUnder and GetVehicleEngineHealth(vehicle) > 0 then
                             if Config.OnFix.sound then
                                 SendNUIMessage({
                                     type = "play",
