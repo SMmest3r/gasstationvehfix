@@ -51,6 +51,7 @@ Citizen.CreateThread(function()
                                 SetVehicleCustomPrimaryColour(vehicle, r, g, b)
                                 SetVehicleCustomSecondaryColour(vehicle, r, g, b)
                             end
+                            Citizen.Wait(Config.Wait.coolwown or 0)
                         end
                     end
                 end
