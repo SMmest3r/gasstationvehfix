@@ -50,7 +50,7 @@ Config.OnFix = {
 
 Config.Wait = {
 	inVehicle = 500, -- Wait time between checks when player is in a vehicle (in milliseconds) !Reducing this may impact performance!
-	outVehicle = 2000 -- Wait time between checks when player is not in a vehicle (in milliseconds) !Reducing this may impact performance!
+	outVehicle = 2000, -- Wait time between checks when player is not in a vehicle (in milliseconds) !Reducing this may impact performance!
 	coolwown = 45000 -- Wait time after a vehicle has been fixed before it can be fixed again (in milliseconds)
 }
 
